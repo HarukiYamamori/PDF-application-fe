@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Generator</title>
+  <link rel="stylesheet" href="css/word-style.css">
+  <title>English Test Generator</title>
+  <script src="js/word.js" defer></script> <!-- スクリプトを読み込む -->
+  <script src="js/loading.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js"></script>
 </head>
 <body>
-<h1>PDF生成アプリ</h1>
-<form id="pdfForm">
-  <label for="userInput">入力テキスト:</label>
-  <textarea id="userInput" rows="5" cols="40"></textarea>
-  <button type="submit">PDF生成</button>
-</form>
-<p id="message"></p>
-<script src="js/index.js"></script>
+<div id="loading">
+  Loading...
+</div>
+<h2>単語帳を選択してください</h2>
+<select id="wordBookSelect">
+  <option value="">選択してください</option>
+  <!-- 単語帳の選択肢がここに追加される -->
+</select>
+
+<h2>セクションを選択してください</h2>
+<div id="sectionCheckboxes" disabled>
+  <!-- セクションのチェックボックスがここに追加される -->
+</div>
+
+<button id="selectSectionsButton" disabled>選択</button>
+
+<div id="wordCountSection" style="display: none; align-content: flex-end">
+  <label for="wordCountInput">1 ~ <span id="maxWordCount"></span> の間で出題数を入力してください</label>
+  <input type="number" id="wordCountInput" min="1" required>
+  <div id="errorMessage" style="color: red; display: none;"></div>
+</div>
+
+<button id="generateTestButton" style="display: none;">テスト生成</button>
+</div>
 </body>
 </html>

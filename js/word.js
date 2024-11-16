@@ -261,6 +261,9 @@ async function createPDF(data, wordBook) {
             yPosition = pageHeight - margin;
         }
 
+        // ここで改行を追加
+        yPosition -= lineHeight; // 「＿＿＿＿＿」の前に余白を作る
+
         page.drawText('＿＿＿＿＿＿＿＿＿＿＿＿', {
             x: margin + 100,
             y: yPosition,
@@ -269,7 +272,7 @@ async function createPDF(data, wordBook) {
             color: rgb(0, 0, 0),
         });
 
-        yPosition -= lineHeight;
+        yPosition -= lineHeight; // 「＿＿＿＿＿」の後にスペースを追加
     });
 
     // 解答用ページ
@@ -316,7 +319,7 @@ async function createPDF(data, wordBook) {
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `${wordBook}_test.pdf`;
+    link.download = `${wordBook}.pdf`;
     link.click();
 }
 
