@@ -1,6 +1,3 @@
-const { PDFDocument, rgb } = PDFLib;
-const FONT_URL = '.resources/fontfile/MPLUS1p-Regular.ttf';
-
 // 単語帳のリストを取得してプルダウンに追加する関数
 async function fetchWordBooks() {
   try {
