@@ -1,7 +1,7 @@
 // 単語帳のリストを取得してプルダウンに追加する関数
 async function fetchWordBooks() {
   try {
-    const response = await fetch('http://18.182.13.89:8080/word-books'); // 単語帳を取得するAPI
+    const response = await fetch('http://35.74.211.148:8080/word-books'); // 単語帳を取得するAPI
     const wordBooks = await response.json();
 
     const select = document.getElementById('wordBookSelect');
@@ -28,7 +28,7 @@ async function fetchSectionsForWordBook() {
   }
 
   try {
-    const response = await fetch(`http://18.182.13.89:8080/test-options?wordBook=${encodeURIComponent(wordBook)}`);
+    const response = await fetch(`http://35.74.211.148:8080/test-options?wordBook=${encodeURIComponent(wordBook)}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -156,7 +156,7 @@ async function generateTest() {
   };
 
   try {
-    const response = await fetch('http://18.182.13.89:8080/create-test', {
+    const response = await fetch('http://35.74.211.148:8080/create-test', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
